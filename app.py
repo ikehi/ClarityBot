@@ -15,10 +15,6 @@ col1, col2, col3 = st.columns([1, 4, 1])
 st.title("ClarityBot")
 st.divider()
 
-theme_data = st_theme()
-st.session_state.theme = (
-    theme_data["base"] if theme_data is not None else "default_theme"
-)
 
 # Set up environment variables
 load_dotenv()
