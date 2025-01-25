@@ -22,7 +22,7 @@ os.environ['GOOGLE_API_KEY'] = os.getenv("GOOGLE_API_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
 
 WARNING_MESSAGE = """
-_Please note that Verdict may make **mistakes**. For critical legal information, always **verify** with a qualified legal professional. LegaBot is here to assist, not replace professional legal advice._
+_Please note that Verdict may make **mistakes**. For critical legal information, always **verify** with a qualified legal professional. ClarityBot is here to assist, not replace professional legal advice._
 """
 
 QUERY_SUGGESTIONS = """
