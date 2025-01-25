@@ -8,7 +8,7 @@ from langchain_groq import ChatGroq
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
 from dotenv import load_dotenv
-from streamlit_theme import st_theme
+
 
 st.set_page_config(page_title="LawGPT")
 col1, col2, col3 = st.columns([1, 4, 1])
