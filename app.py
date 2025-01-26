@@ -9,22 +9,101 @@ from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
 from dotenv import load_dotenv
 
-
+# Inject custom CSS for loading animation (for light and dark mode)
 st.set_page_config(page_title="LawGPT")
+st.markdown(
+    """
+    <style>
+    /* General styles */
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    .loader-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Light mode loader */
+    .loader-light {
+        width: fit-content;
+        font-weight: bold;
+        font-family: monospace;
+        font-size: 30px;
+        background: radial-gradient(circle closest-side, #000 94%, #0000) right/calc(200% - 1em) 100%;
+        animation: l24 1s infinite alternate linear;
+        color: #000;
+    }
+
+    .loader-light::before {
+        content: "Loading...";
+        line-height: 1em;
+        background-image: radial-gradient(circle closest-side, #fff 94%, #000);
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+
+    /* Dark mode loader */
+    .loader-dark {
+        width: fit-content;
+        font-weight: bold;
+        font-family: monospace;
+        font-size: 30px;
+        background: radial-gradient(circle closest-side, #fff 94%, #fff0) right/calc(200% - 1em) 100%;
+        animation: l24 1s infinite alternate linear;
+        color: #fff;
+    }
+
+    .loader-dark::before {
+        content: "Loading...";
+        line-height: 1em;
+        background-image: radial-gradient(circle closest-side, #000 94%, #fff);
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+
+    @keyframes l24 {
+        100% { background-position: left; }
+    }
+    </style>
+    <div class="loader-container">
+        <div class="loader-light"></div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Simulate loading delay (remove this in production)
+time.sleep(2)
+
+# Clear the loader after the delay
+st.markdown(
+    """
+    <style>
+    .loader-container { display: none; }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Configure the Streamlit page
+# Set up columns and title
 col1, col2, col3 = st.columns([1, 4, 1])
 st.title("ClarityBot")
 st.divider()
 
-
-# Set up environment variables
+# Load environment variables
 load_dotenv()
 os.environ['GOOGLE_API_KEY'] = os.getenv("GOOGLE_API_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
 
+# Warnings and suggestions
 WARNING_MESSAGE = """
 _Please note that Verdict may make **mistakes**. For critical legal information, always **verify** with a qualified legal professional. ClarityBot is here to assist, not replace professional legal advice._
 """
-
 QUERY_SUGGESTIONS = """
 How many days of annual leave am I entitled to?\n
 Am I allowed to take maternity leave in place of my wife?\n
@@ -33,14 +112,11 @@ Can I request the deletion of my data from a website if I did not approve it?\n
 What is the deadline for requesting a replacement for a product I am not satisfied with?\n
 Who owns the gifts that my husband and I received at our wedding?
 """
-
-
 AUTHORS = """
-[IKEHI MATTHIAS](https://www.linkedin.com/in/matthias-ikehi-3249b8261/)\n
+[IKEHI MATTHIAS](https://www.linkedin.com/in/matthias-ikehi-3249b8261/)
 """
-# Streamlit UI setup
 
-
+# Sidebar content
 with st.sidebar:
     st.subheader("💡 Query Suggestions")
     with st.container(border=True, height=200):
@@ -52,6 +128,9 @@ with st.sidebar:
 
     st.subheader("✍️ Authors")
     st.markdown(AUTHORS)
+
+# Main application logic continues...
+
 st.markdown("""
     <style>
     div.stButton > button:first-child {
@@ -66,7 +145,7 @@ st.markdown("""
     .reportview-container {
         margin-top: -2em;
     }
-    #MainMenu {visibility: hidden;}
+
     .stDeployButton {display:none;}
     footer {visibility: hidden;}
     #stDecoration {display:none;}
@@ -75,6 +154,7 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+
 opening_message = """
 Hello! I am a legal assistant, and my task is to help you understand procedures and answer questions related to the following regulations:
 - [Labor Law](https://www.paragraf.rs/propisi/zakon_o_radu.html)
@@ -89,12 +169,17 @@ How can I assist you?
 
 """
 
+# Sidebar content
+
 # Display the opening message
 st.markdown(opening_message)
+
+
 # Reset conversation function
 def reset_conversation():
     st.session_state.messages = []
     st.session_state.memory.clear()
+
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -150,7 +235,7 @@ for message in st.session_state.messages:
         st.write(message.get("content"))
 
 # Input prompt
-input_prompt = st.chat_input("Ask Somthing about Law")
+input_prompt = st.chat_input("Ask Something about Law")
 
 if input_prompt:
     with st.chat_message("user"):
@@ -164,16 +249,10 @@ if input_prompt:
             message_placeholder = st.empty()
             full_response = "\n\n\n"
 
-            # Print the result dictionary to inspect its structure
-            #st.write(result)
-
             for chunk in result["answer"]:
                 full_response += chunk
                 time.sleep(0.02)
                 message_placeholder.markdown(full_response + " ▌")
-
-            # Print the answer
-            #st.write(result["answer"])
 
         st.button('Reset All Chat 🗑️', on_click=reset_conversation)
     st.session_state.messages.append({"role": "assistant", "content": result["answer"]})
