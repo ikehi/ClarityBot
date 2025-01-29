@@ -11,88 +11,67 @@ from dotenv import load_dotenv
 
 # Inject custom CSS for loading animation (for light and dark mode)
 st.set_page_config(page_title="LawGPT")
+
 st.markdown(
     """
     <style>
-    /* General styles */
-    html, body {
-        height: 100%;
-        margin: 0;
+    /* Loader for light and dark modes */
+    .loader {
+      width: 40px;
+      aspect-ratio: .577;
+      clip-path: polygon(0 0, 100% 100%, 0 100%, 100% 0);
+      position: relative;
+      margin: 100px auto;
+      animation: l19 2s infinite linear;
+      overflow: hidden;
     }
-
-    .loader-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+    .loader:before {
+      content: "";
+      position: absolute;
+      inset: -150% -150%;
+      background: repeating-conic-gradient(from 30deg, #FFABAB 0 60deg, #ABE4FF 0 120deg, #FF7373 0 180deg);
+      animation: inherit;
+      animation-direction: reverse;
     }
-
-    /* Light mode loader */
-    .loader-light {
-        width: fit-content;
-        font-weight: bold;
-        font-family: monospace;
-        font-size: 30px;
-        background: radial-gradient(circle closest-side, #000 94%, #0000) right/calc(200% - 1em) 100%;
-        animation: l24 1s infinite alternate linear;
-        color: #000;
+    @keyframes l19 {
+      100% { transform: rotate(360deg); }
     }
-
-    .loader-light::before {
-        content: "Loading...";
-        line-height: 1em;
-        background-image: radial-gradient(circle closest-side, #fff 94%, #000);
-        -webkit-background-clip: text;
-        background-clip: text;
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
     }
-
-    /* Dark mode loader */
-    .loader-dark {
-        width: fit-content;
-        font-weight: bold;
-        font-family: monospace;
-        font-size: 30px;
-        background: radial-gradient(circle closest-side, #fff 94%, #fff0) right/calc(200% - 1em) 100%;
-        animation: l24 1s infinite alternate linear;
-        color: #fff;
+    [data-theme="light"] {
+      --background-color: #FFFFFF;
+      --text-color: #000000;
     }
-
-    .loader-dark::before {
-        content: "Loading...";
-        line-height: 1em;
-        background-image: radial-gradient(circle closest-side, #000 94%, #fff);
-        -webkit-background-clip: text;
-        background-clip: text;
-    }
-
-    @keyframes l24 {
-        100% { background-position: left; }
+    [data-theme="dark"] {
+      --background-color: #000000;
+      --text-color: #FFFFFF;
     }
     </style>
-    <div class="loader-container">
-        <div class="loader-light"></div>
-    </div>
+    <div class="loader"></div>
     """,
     unsafe_allow_html=True,
 )
 
-# Simulate loading delay (remove this in production)
-time.sleep(2)
+# Simulate loading (remove this in production)
+time.sleep(3)
 
-# Clear the loader after the delay
+# Clear the loader
 st.markdown(
     """
     <style>
-    .loader-container { display: none; }
+    .loader { display: none; }
     </style>
     """,
     unsafe_allow_html=True,
 )
+
 
 # Configure the Streamlit page
 # Set up columns and title
 col1, col2, col3 = st.columns([1, 4, 1])
-st.title("ClarityBot")
+st.title("JusticeAI")
 st.divider()
 
 # Load environment variables
@@ -102,7 +81,7 @@ groq_api_key = os.getenv("GROQ_API_KEY")
 
 # Warnings and suggestions
 WARNING_MESSAGE = """
-_Please note that Verdict may make **mistakes**. For critical legal information, always **verify** with a qualified legal professional. ClarityBot is here to assist, not replace professional legal advice._
+_Please note that JusticeAI may make **mistakes**. For critical legal information, always **verify** with a qualified legal professional. JusticeAI is here to assist, not replace professional legal advice._
 """
 QUERY_SUGGESTIONS = """
 How many days of annual leave am I entitled to?\n
@@ -157,11 +136,11 @@ st.markdown("""
 
 opening_message = """
 Hello! I am a legal assistant, and my task is to help you understand procedures and answer questions related to the following regulations:
-- [Labor Law](https://www.paragraf.rs/propisi/zakon_o_radu.html)
-- [Personal Income Tax Law](https://www.paragraf.rs/propisi/zakon-o-porezu-na-dohodak-gradjana.html)
-- [Personal Data Protection Law](https://www.paragraf.rs/propisi/zakon_o_zastiti_podataka_o_licnosti.html)
+- [Labor Law](https://lawsofnigeria.placng.org/laws/L1.pdf)
+- [Personal Income Tax Law](https://old.firs.gov.ng/wp-content/uploads/2021/07/Personal-Income-Tax-Act.pdf)
+- [Personal Data Protection Law](https://nitda.gov.ng/wp-content/uploads/2020/11/NigeriaDataProtectionRegulation11.pdf)
 - [Consumer Protection Law](https://www.paragraf.rs/propisi/zakon_o_zastiti_potrosaca.html)
-- [Family Law](https://www.paragraf.rs/propisi/porodicni_zakon.html)
+- [Family Law](https://nou.edu.ng/coursewarecontent/LAW%20344%20FAMILY%20LAW%20II.pdf?utm_source=chatgpt.com)
 
 My role is to facilitate your understanding of legal procedures and provide you with useful and accurate information.
 
@@ -194,7 +173,7 @@ db_retriever = db.as_retriever(search_type="similarity", search_kwargs={"k": 4})
 
 # Define the prompt template
 prompt_template = """
-<s>[INST]You are a legal assistant chatbot with expertise in All aspects of the Nigerian law. Your primary objective is to provide accurate, concise, and professional responses to user questions. Here’s how you operate:
+<s>[INST]You are a legal assistant chatbot named JusticeAI with expertise in All aspects of the Nigerian law. Your primary objective is to provide accurate, concise, and professional responses to user questions. Here’s how you operate:
 
 1. **Direct and Complete Answers**: Always provide clear and relevant answers to the user's query without unnecessary elaboration or requests for additional context.
 2. **Fallback to Knowledge Base**: If the provided context or chat history is unrelated or insufficient, rely solely on your internal knowledge to answer the query.
