@@ -139,7 +139,7 @@ Hello! I am a legal assistant, and my task is to help you understand procedures 
 - [Labor Law](https://lawsofnigeria.placng.org/laws/L1.pdf)
 - [Personal Income Tax Law](https://old.firs.gov.ng/wp-content/uploads/2021/07/Personal-Income-Tax-Act.pdf)
 - [Personal Data Protection Law](https://nitda.gov.ng/wp-content/uploads/2020/11/NigeriaDataProtectionRegulation11.pdf)
-- [Consumer Protection Law](https://www.paragraf.rs/propisi/zakon_o_zastiti_potrosaca.html)
+- [Consumer Protection Law](https://placng.org/i/wp-content/uploads/2019/12/Federal-Competition-and-Consumer-Protection-Act-2018.pdf)
 - [Family Law](https://nou.edu.ng/coursewarecontent/LAW%20344%20FAMILY%20LAW%20II.pdf?utm_source=chatgpt.com)
 
 My role is to facilitate your understanding of legal procedures and provide you with useful and accurate information.
