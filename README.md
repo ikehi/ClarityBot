@@ -45,7 +45,6 @@ The architecture of JuscticeAI includes the following components:
 - Python 3.12
 - [Streamlit](https://streamlit.io/)
 - [LangChain Community](https://github.com/langchain-ai/langchain-community)
-- [Google Generative AI](https://github.com/google-research/google-research/tree/master/large-scale-causal-ml)
 - [FAISS](https://github.com/facebookresearch/faiss)
 
 ### Installation Steps
