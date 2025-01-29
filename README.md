@@ -1,8 +1,8 @@
-# LawGPT: LLM-based Legal ChatBot
+# JuscticeAI: LLM-based Legal ChatBot
 
 ![Python 3.12](https://img.shields.io/badge/Python-3.10-brightgreen.svg) [![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#)  
 
-LawGPT is a Large Language Model (LLM) based chatbot designed to provide legal information. The chatbot utilizes RAG architecture, advanced language models and embeddings to retrieve and generate contextually relevant answers from a provided legal document corpus. This project specifically focuses on the Nigerian Law system and other related legal documents.
+JuscticeAI is a Large Language Model (LLM) based chatbot designed to provide legal information. The chatbot utilizes RAG architecture, advanced language models and embeddings to retrieve and generate contextually relevant answers from a provided legal document corpus. This project specifically focuses on the Nigerian Law system and other related legal documents.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ LawGPT is a Large Language Model (LLM) based chatbot designed to provide legal i
 
 ## Introduction
 
-LawGPT aims to assist users by providing accurate and concise legal information in the country on nigeria  and related legal documents. The chatbot retrieves relevant context from the knowledge base to answer user queries efficiently.
+JuscticeAI aims to assist users by providing accurate and concise legal information in the country on nigeria  and related legal documents. The chatbot retrieves relevant context from the knowledge base to answer user queries efficiently.
 
 ## Features
 
@@ -28,7 +28,7 @@ LawGPT aims to assist users by providing accurate and concise legal information 
 
 ## Architecture
 
-The architecture of LawGPT includes the following components:
+The architecture of JuscticeAI includes the following components:
 
 1. **Document Loader**: Loads legal documents from a directory of PDF files.
 2. **Text Splitter**: Splits documents into manageable chunks for embedding.
@@ -53,7 +53,7 @@ The architecture of LawGPT includes the following components:
 
 ```bash
    git clone https://github.com/ikehi/ClarityBot
-   cd lawgpt
+   cd JuscticeAI
 ```
 
 2.  **Set Up and Activate Virtual Environment**
@@ -92,7 +92,7 @@ streamlit run app.py
 ```
 ## Deployed Website
 
-LawGPT is also deployed on Streamlit Cloud. You can access the chatbot directly via the following link:
+JuscticeAI is also deployed on Streamlit Cloud. You can access the chatbot directly via the following link:
 
 
 

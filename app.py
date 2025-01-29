@@ -10,7 +10,7 @@ from langchain.chains import ConversationalRetrievalChain
 from dotenv import load_dotenv
 
 # Inject custom CSS for loading animation (for light and dark mode)
-st.set_page_config(page_title="LawGPT")
+st.set_page_config(page_title="JuscticeAI")
 
 st.markdown(
     """
