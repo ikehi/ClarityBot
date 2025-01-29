@@ -6,12 +6,12 @@ JusticeAI is an advanced chatbot built on Large Language Models (LLM), designed 
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Architecture](#architecture)
+- [Overview](#introduction)
+- [Key Features](#features)
+- [System Architecture](#architecture)
 - [Setup and Installation](#setup-and-installation)
-- [Usage](#usage)
-- [Deployed Website](#deployed-website)
+- [Running the Application](#usage)
+- [Live Demo](#deployed-website)
 
 
 ## Introduction
