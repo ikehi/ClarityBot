@@ -92,8 +92,9 @@ What is the deadline for requesting a replacement for a product I am not satisfi
 Who owns the gifts that my husband and I received at our wedding?
 """
 AUTHORS = """
-[IKEHI MATTHIAS](https://www.linkedin.com/in/matthias-ikehi-3249b8261/)
-[BABALOLA AYODEJI]
+[IKEHI MATTHIAS](https://www.linkedin.com/in/matthias-ikehi-3249b8261/) 
+
+**BABALOLA AYODEJI**
 """
 
 # Sidebar content
