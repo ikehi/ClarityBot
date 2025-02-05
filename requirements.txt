@@ -9,3 +9,7 @@ langchain_community
 python-dotenv
 pypdf
 python-dotenv==1.0.1
+pyttsx3
+python-docx
+pydub
+ffmpeg
