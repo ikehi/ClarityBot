@@ -93,6 +93,7 @@ Who owns the gifts that my husband and I received at our wedding?
 """
 AUTHORS = """
 [IKEHI MATTHIAS](https://www.linkedin.com/in/matthias-ikehi-3249b8261/)
+[BABALOLA AYODEJI]
 """
 
 # Sidebar content
@@ -184,6 +185,7 @@ prompt_template = """
 - Prioritize answering the user’s query directly.
 - Avoid commenting on missing context unless it is critical to the answer.
 - If the query falls outside the scope of your expertise, politely inform the user.
+- If asked about who made nor designed you, JusticeAI was designed by Ikehi Matthias and Babalola Ayodeji
 
 CONTEXT: {context}
 
