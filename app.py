@@ -30,7 +30,7 @@ except ImportError:
     PyPDF2 = None
 
 # ========= Initialize the TTS engine and select a professional female voice =========
-tts_engine = pyttsx3.init()
+# tts_engine = pyttsx3.init()
 
 # Try to choose a female voice based on available voices.
 # voices = tts_engine.getProperty('voices')
