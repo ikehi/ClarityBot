@@ -13,3 +13,5 @@ pyttsx3
 python-docx
 pydub
 ffmpeg
+SpeechRecognition
+PyPDF2
